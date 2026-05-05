@@ -3,6 +3,9 @@ FROM node:18-alpine
 # Set working directory
 WORKDIR /app
 
+# Install curl for health check
+RUN apk add --no-cache curl
+
 # Copy package files
 COPY package*.json ./
 COPY prisma ./prisma/
