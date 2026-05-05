@@ -13,6 +13,20 @@ dotenv.config();
 const app = express();
 const prisma = new PrismaClient();
 
+// Database connection
+async function connectDatabase() {
+  try {
+    await prisma.$connect();
+    console.log('✅ Database connected successfully');
+  } catch (error) {
+    console.error('❌ Database connection failed:', error);
+    process.exit(1);
+  }
+}
+
+// Connect to database
+connectDatabase();
+
 // Middleware
 app.use(cors());
 app.use(express.json());
